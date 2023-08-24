@@ -1,8 +1,13 @@
-var http = require("http");
+const express = require('express');
+const app = express();
+const port = 3000;
 
-http.createServer(function(request, response) {
-  response.writeHead(200, {"Content-Type": "text/plain"});
-  response.write("Hello World. This page is running Node.js version: ");
-  response.write(process.version);
-  response.end();
-}).listen(8888);
+// Ruta para la página de estado
+app.get('/status', (req, res) => {
+  res.send('OK'); // Respondemos con "OK" para indicar que la aplicación está en funcionamiento
+});
+
+// Iniciar el servidor
+app.listen(port, () => {
+  console.log(`Servidor web iniciado en http://localhost:${port}`);
+});

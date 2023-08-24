@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chat App</title>
+  <title>Verificación del Estado de la Aplicación</title>
 </head>
 <body>
-  <h1>Welcome to the Chat App!</h1>
+  <h1>Estado de la Aplicación</h1>
+  <p id="status-message">Verificando...</p>
+
+  <script>
+    // Realiza una solicitud a la URL de la aplicación para verificar su estado
+    const url = "https://app-prueba-jq9z.vercel.app/status"; // Cambia la URL a la dirección correcta
+    const statusMessage = document.getElementById("status-message");
+
+    fetch(url)
+      .then(response => {
+        if (response.ok) {
+          statusMessage.textContent = "La aplicación está en funcionamiento.";
+        } else {
+          statusMessage.textContent = "La aplicación no está disponible en este momento.";
+        }
+      })
+      .catch(error => {
+        statusMessage.textContent = "Hubo un error al verificar la aplicación.";
+      });
+  </script>
 </body>
 </html>
